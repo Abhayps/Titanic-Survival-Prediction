@@ -1,7 +1,7 @@
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
-
+#Accuracy 0.78
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from sklearn.ensemble import RandomForestClassifier
@@ -40,8 +40,8 @@ test["Embarked"][test["Embarked"] == "Q"] = 2
 test["Fare"]=test["Fare"].fillna(test.Fare.mean())
 
 target = train["Survived"].values
-features_forest = train[["Pclass", "Age", "Sex","Parch","Fare"]].values
-test_features = test[["Pclass", "Age", "Sex","Parch","Fare"]].values
+features_forest = train[["Pclass", "Age", "Sex","Fare"]].values
+test_features = test[["Pclass", "Age", "Sex","Fare"]].values
 
 forest = tree.DecisionTreeClassifier(max_depth =10, min_samples_split = 5, random_state = 1)
 my_forest = forest.fit(features_forest, target)
